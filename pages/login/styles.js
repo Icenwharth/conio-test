@@ -1,8 +1,14 @@
+//libraries
 import styled from "styled-components";
 
-export const FormContainer = styled.form`
+export const Container = styled.div`
+  max-width: 800px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 `;
 
 export const Input = styled.textarea`
@@ -16,6 +22,6 @@ export const Input = styled.textarea`
   margin-bottom: 10px;
 
   @media (max-width: 540px) {
-    width: 90%;
+    width: 250px;
   }
 `;

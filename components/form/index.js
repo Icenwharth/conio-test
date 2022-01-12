@@ -21,8 +21,9 @@ export default function FormComponent({ children, onSubmit, fields }) {
 
   return (
     <FormContainer onSubmit={onSubmit}>
-      {fields.map((field) => (
+      {fields.map((field, key) => (
         <Input
+          key={key}
           id={field.name}
           type={field.type}
           value={formFields[field.name]}

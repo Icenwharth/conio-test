@@ -15,13 +15,9 @@ import {
   ButtonsWrapper,
 } from "./styles";
 
-export default function PriceCard({
-  exchangeRates,
-  btcQnty,
-  setShowModal,
-  setModal,
-}) {
+export default function PriceCard({ exchangeRates }) {
   const [currency, setCurrency] = useState(Object.keys(exchangeRates)[0]);
+  const [btcQnty, setBtcQnty] = useState(2.5);
 
   const fiatQnty = btcQnty * exchangeRates[currency].sell;
   const symbol = exchangeRates[currency].symbol;
@@ -29,6 +25,16 @@ export default function PriceCard({
   function handleChange(e) {
     setCurrency(e.target.value);
   }
+
+  function sellBtc() {
+    if (btcQnty - 1 < 0) return;
+    setBtcQnty(btcQnty - 1);
+  }
+
+  function buyBtc() {
+    setBtcQnty(btcQnty + 1);
+  }
+
   return (
     <CardWrapper>
       <FiatQnty>{`${fiatQnty.toFixed(2)} ${symbol}`}</FiatQnty>
@@ -43,20 +49,15 @@ export default function PriceCard({
         </Select>
       </SelectWrapper>
 
-      <BtcQnty>{"Balance: " + btcQnty.toFixed(6) + ` BTC`}</BtcQnty>
-
       <ButtonsWrapper>
-        <Button
-          text="Sell"
-          type="passive-action"
-          onClick={() => {}} //e.x set a modal to a sell form
-        />
+        <Button text="Sell" type="passive-action" onClick={sellBtc} />
         <Button
           text="Buy"
           type="active-action"
-          onClick={() => {}} //e.x set a modal to a buy form
+          onClick={buyBtc} //or create a modal form for the exact qnty
         />
       </ButtonsWrapper>
+      <BtcQnty>{"Balance: " + btcQnty.toFixed(6) + ` BTC`}</BtcQnty>
     </CardWrapper>
   );
 }

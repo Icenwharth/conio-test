@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CardWrapper = styled.div`
   border-radius: 20px;
   background: #ececec;
-  height: 100%;
+  height: 200px;
   padding: 30px;
 
   display: grid;
@@ -11,6 +11,11 @@ export const CardWrapper = styled.div`
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 20px;
   grid-row-gap: 20px;
+
+  @media (max-width: 540px) {
+    width: 80%;
+    height: 250px;
+  }
 `;
 
 export const SelectWrapper = styled.div`
@@ -38,18 +43,25 @@ export const FiatQnty = styled.h3`
 `;
 
 export const BtcQnty = styled.h5`
-  grid-area: 2 / 1 / 3 / 2;
   font-family: "Roboto";
   font-size: 18px;
   color: #717171;
-  display: flex;
-  align-items: flex-end;
-  margin: 0;
+
+  @media (max-width: 540px) {
+    align-items: flex-end;
+    align-self: flex-end;
+    grid-area: 2 / 2 / 3 / 3;
+  }
 `;
 
 export const ButtonsWrapper = styled.div`
-  grid-area: 2 / 2 / 3 / 3;
-  display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-end;
+  @media (min-width: 540px) {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+
+  @media (max-width: 540px) {
+    flex-direction: column;
+  }
 `;
