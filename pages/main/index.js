@@ -25,7 +25,7 @@ export default function MainPage() {
     <Wrapper>
       <Container>
         {typeof exchangeRates === "object" && (
-          <PriceCard exchangeRates={exchangeRates} btcQnty={btcQnty} />
+          <PriceCard exchangeRates={exchangeRates} />
         )}
       </Container>
     </Wrapper>
